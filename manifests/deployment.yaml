@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jg-first-aks-workflow
+  labels:
+    app: jg-first-aks-workflow
+  namespace: jg-aks-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jg-first-aks-workflow
+  template:
+    metadata:
+      labels:
+        app: jg-first-aks-workflow
+    spec:
+      containers:
+        - name: jg-first-aks-workflow
+          image: acrworkflow1691130964557.azurecr.io/image-workflow-1691130964557:latest
+          ports:
+            - containerPort: 8080
